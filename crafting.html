@@ -29,13 +29,13 @@
     </section>
   </main>
   <footer><div class="wrap footer-row"><span>Datos de recetas de Bedrock y traducciones oficiales es-MX.</span><span>Texturas vanilla © Mojang Studios · <a href="https://github.com/Mojang/bedrock-samples">Bedrock Samples</a></span></div></footer>
-  <script src="crafting-data.js"></script>
-  <script src="crafting-recipes-1.js"></script>
-  <script src="crafting-recipes-2.js"></script>
-  <script src="crafting-recipes-3.js"></script>
-  <script src="crafting-recipes-4.js"></script>
-  <script src="crafting-recipes-5.js"></script>
-  <script src="crafting-recipes-6.js"></script>
+  <script src="crafting-data.js?v=20260722-2"></script>
+  <script src="crafting-recipes-1.js?v=20260722-2"></script>
+  <script src="crafting-recipes-2.js?v=20260722-2"></script>
+  <script src="crafting-recipes-3.js?v=20260722-2"></script>
+  <script src="crafting-recipes-4.js?v=20260722-2"></script>
+  <script src="crafting-recipes-5.js?v=20260722-2"></script>
+  <script src="crafting-recipes-6.js?v=20260722-2"></script>
   <script>
     const data=window.CRAFTING_DATA;const byId=new Map(data.items.map(x=>[x.id,x]));const list=document.querySelector('#itemList');const search=document.querySelector('#search');const selectedBox=document.querySelector('#selected');const cards=document.querySelector('#cards');const filters=document.querySelector('#filters');let selectedId=new URLSearchParams(location.search).get('item')||'bamboo';let activeMode='Todas';
     document.querySelector('#recipeStat').textContent=data.recipes.length.toLocaleString('es-MX')+' recetas de crafteo';
