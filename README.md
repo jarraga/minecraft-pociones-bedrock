@@ -4,6 +4,6 @@ Guía completa en español de México para Minecraft Bedrock Edition.
 
 ## Sitio publicado
 
-https://pociones-bedrock-mx.jarraga.chatgpt.site
+https://jarraga.github.io/minecraft-pociones-bedrock/
 
 El archivo `index.html` contiene la guía completa y funciona sin dependencias externas.
