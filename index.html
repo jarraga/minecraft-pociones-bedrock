@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guía completa de pociones — Minecraft Bedrock (Español México)</title>
+  <style>
+    :root {
+      --bg: #0b0e12;
+      --panel: #141a21;
+      --panel-2: #1a222c;
+      --line: #2a3542;
+      --text: #f2f5f7;
+      --muted: #aab6c2;
+      --green: #7fe36b;
+      --green-dark: #244b2b;
+      --gold: #f2ca52;
+      --red: #ff7d73;
+      --blue: #74c7ec;
+      --purple: #c8a0ff;
+      --shadow: 0 18px 50px rgba(0,0,0,.32);
+    }
+    * { box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% -10%, rgba(93,167,79,.18), transparent 27rem),
+        radial-gradient(circle at 100% 10%, rgba(82,136,183,.13), transparent 25rem),
+        var(--bg);
+      font: 16px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+    a { color: #9dd9ff }
+    img.pixel { image-rendering: pixelated; image-rendering: crisp-edges }
+    .layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); min-height: 100vh }
+    aside {
+      position: sticky; top: 0; height: 100vh; padding: 26px 20px;
+      border-right: 1px solid var(--line); background: rgba(10,13,17,.88); backdrop-filter: blur(14px);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px }
+    .brand img { width: 44px; height: 44px; object-fit: contain }
+    .brand strong { display: block; font-size: 15px }
+    .brand span { color: var(--muted); font-size: 12px }
+    nav a { display: block; padding: 9px 11px; margin: 3px 0; border-radius: 8px; color: var(--muted); text-decoration: none; font-size: 14px }
+    nav a:hover { color: var(--text); background: var(--panel-2) }
+    .version { position: absolute; left: 20px; right: 20px; bottom: 22px; color: #81909d; font-size: 11px }
+    main { width: min(1160px, 100%); padding: 48px 42px 90px }
+    section { scroll-margin-top: 20px; margin-top: 72px }
+    .hero { min-height: 360px; display: grid; grid-template-columns: 1.45fr .55fr; gap: 30px; align-items: center; margin-top: 0 }
+    .eyebrow { color: var(--green); font-weight: 800; letter-spacing: .13em; text-transform: uppercase; font-size: 12px }
+    h1 { max-width: 850px; margin: 12px 0 16px; font-size: clamp(40px, 6vw, 78px); line-height: .98; letter-spacing: -.055em }
+    h2 { margin: 0 0 12px; font-size: clamp(28px, 3vw, 42px); letter-spacing: -.035em }
+    h3 { margin: 0 0 8px; font-size: 19px }
+    .lead { max-width: 780px; color: #c6d0d8; font-size: 18px }
+    .hero-bottle { justify-self: center; width: min(210px, 100%); filter: drop-shadow(0 28px 32px rgba(0,0,0,.5)) }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px }
+    .badge { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; color: #c6d0d8; background: rgba(20,26,33,.72); font-size: 12px }
+    .callout { margin: 26px 0; padding: 18px 20px; border: 1px solid #3b643f; border-left: 5px solid var(--green); border-radius: 12px; background: linear-gradient(90deg, rgba(48,92,49,.26), rgba(20,26,33,.72)) }
+    .callout strong { color: #a9f29c }
+    .warning { border-color: #6c5630; border-left-color: var(--gold); background: linear-gradient(90deg, rgba(103,72,25,.24), rgba(20,26,33,.72)) }
+    .warning strong { color: #ffe28a }
+    .grid { display: grid; gap: 16px }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) }
+    .card { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, rgba(27,35,44,.95), rgba(17,22,29,.95)); box-shadow: var(--shadow) }
+    .card p { margin: 0; color: #bcc7d0 }
+    .icon-line { display: flex; align-items: center; gap: 13px; margin-bottom: 12px }
+    .icon-line img { width: 48px; height: 48px; object-fit: contain }
+    .steps { counter-reset: step; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px }
+    .step { position: relative; min-height: 165px; padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--panel) }
+    .step::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 26px; height: 26px; margin-bottom: 14px; border-radius: 7px; color: #0b0e12; background: var(--green); font-weight: 900 }
+    .step img { position: absolute; right: 14px; top: 14px; width: 46px; height: 46px; object-fit: contain }
+    .step p { color: var(--muted); font-size: 14px }
+    .recipe-flow { display: flex; align-items: center; gap: 10px; overflow-x: auto; padding: 20px 0 8px }
+    .node { min-width: 148px; padding: 14px; text-align: center; border: 1px solid var(--line); border-radius: 12px; background: var(--panel) }
+    .node img { display: block; width: 52px; height: 52px; margin: 0 auto 9px; object-fit: contain }
+    .arrow { color: var(--green); font-size: 24px; font-weight: 900 }
+    .plus { color: var(--gold); font-size: 20px; font-weight: 900 }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); box-shadow: var(--shadow) }
+    table { width: 100%; border-collapse: collapse; min-width: 760px }
+    th, td { padding: 13px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle }
+    th { position: sticky; top: 0; z-index: 1; color: #c9d3dc; background: #1a222c; font-size: 12px; letter-spacing: .06em; text-transform: uppercase }
+    tr:last-child td { border-bottom: 0 }
+    td { color: #d8dfe5; font-size: 14px }
+    td small { display: block; color: var(--muted); margin-top: 3px }
+    .object { display: flex; align-items: center; gap: 11px; min-width: 190px }
+    .object img { width: 42px; height: 42px; object-fit: contain; flex: 0 0 auto }
+    .filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 24px 0 16px }
+    .filters input { flex: 1 1 260px; min-height: 42px; padding: 0 13px; color: var(--text); border: 1px solid var(--line); border-radius: 10px; background: var(--panel) }
+    button { min-height: 42px; padding: 0 13px; color: #cbd5dd; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); cursor: pointer }
+    button.active, button:hover { color: #10150f; border-color: var(--green); background: var(--green) }
+    .potion-name { font-weight: 800; color: #fff }
+    .tag { display: inline-block; padding: 3px 7px; border-radius: 999px; font-size: 11px; font-weight: 800 }
+    .positive { color: #9bf28d; background: #23472b }
+    .negative { color: #ffaaa4; background: #542b2d }
+    .special { color: #d8bcff; background: #43335b }
+    .muted { color: var(--muted) }
+    .yes { color: #9bf28d }
+    .no { color: #ffaaa4 }
+    details { border: 1px solid var(--line); border-radius: 13px; background: var(--panel); margin: 12px 0; overflow: hidden }
+    summary { padding: 16px 18px; cursor: pointer; font-weight: 800 }
+    details > div { padding: 0 18px 18px; color: #c3cdd5 }
+    .tips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px }
+    .tip { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel) }
+    .tip strong { display: block; margin-bottom: 6px }
+    .tip span { color: var(--muted); font-size: 14px }
+    .source-list li { margin-bottom: 10px; color: #b9c5ce }
+    footer { margin-top: 70px; padding-top: 24px; border-top: 1px solid var(--line); color: #7f8d99; font-size: 12px }
+    @media (max-width: 900px) {
+      .layout { display: block }
+      aside { position: static; width: 100%; height: auto; border-right: 0; border-bottom: 1px solid var(--line) }
+      aside nav, .version { display: none }
+      main { padding: 30px 18px 70px }
+      .hero { grid-template-columns: 1fr; min-height: auto }
+      .hero-bottle { width: 128px; order: -1 }
+      .grid-3, .steps { grid-template-columns: 1fr 1fr }
+      .tips { grid-template-columns: 1fr }
+    }
+    @media (max-width: 560px) {
+      h1 { font-size: 42px }
+      .grid-3, .steps { grid-template-columns: 1fr }
+      section { margin-top: 54px }
+      .hero-bottle { width: 108px }
+    }
+    @media print {
+      aside, .filters { display: none }
+      .layout { display: block }
+      body { background: #fff; color: #111 }
+      main { width: 100%; padding: 0 }
+      .card, .table-wrap, .step, details, .tip, .node { box-shadow: none; background: #fff; color: #111; border-color: #bbb }
+      h1, h2, h3, td, .potion-name { color: #111 }
+      p, .lead, td small, .muted, .card p, .tip span { color: #444 }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="brand">
+        <img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACSSURBVDjLY2AYfsDQ0PA/jP34Vtl/EMYmh9cAmMKbZ+z/gzC6OE4QFBQEVoRMYxMjaAiMfWW7FdwF6HIEQXR09P9Lzcb/QYaA2CQHJkgTSDPIEJINAGlIS0uDuwDEJskQkOLKysr/p5K1wIaA2GQZANIMMoQkA2DOnzx5MtwFIDZBb4SFhf1HxyBNIIxNbvDkHQDG8ZiuGAjMgQAAAABJRU5ErkJggg==" alt="Puesto de destilado">
+        <div><strong>Manual del alquimista</strong><span>Bedrock · Español (México)</span></div>
+      </div>
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#montaje">Cómo empezar</a>
+        <a href="#ingredientes">Ingredientes</a>
+        <a href="#bases">Pociones base</a>
+        <a href="#catalogo">Todas las pociones</a>
+        <a href="#variantes">Arrojadizas y persistentes</a>
+        <a href="#flechas">Flechas con efecto</a>
+        <a href="#consejos">Consejos y errores</a>
+        <a href="#nombres">Nombres oficiales</a>
+        <a href="#fuentes">Fuentes</a>
+      </nav>
+      <div class="version">Revisión: 22 de julio de 2026<br>Base estable consultada: Bedrock 26.30</div>
+    </aside>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div>
+          <div class="eyebrow">Guía completa y práctica</div>
+          <h1>Todas las pociones de Minecraft Bedrock</h1>
+          <p class="lead">Recetas, efectos, duraciones, mejoras y nombres exactos de la interfaz en <strong>Español (México)</strong>. Pensada para jugar en supervivencia, pero incluye las excepciones de creativo.</p>
+          <div class="badges">
+            <span class="badge">20 pociones con efecto</span>
+            <span class="badge">Iconos vanilla de Bedrock</span>
+            <span class="badge">Diferencias de Java señaladas</span>
+            <span class="badge">Buscador incluido</span>
+          </div>
+        </div>
+        <img class="hero-bottle pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATFJREFUOI3FkjFLw1AUhT+liIq0KBUcDEjp1sk/0KWDiHR26qyIDkqJoEt+gNClYHc3BwedHAQpgqCDFJIONdhBgrENrSnUdHsOQqB9L0VB8Ez3cc8999x7H/w3JsYlzb11AWA1bDavn5XcSAHTCcTg4SJ8v62skV9NSvxYlECz1eezYgDQ+fBZrtTHmVXj6skTAIVSVURxJn8v+0OYTjDUNcqFcommE4hAv8Qt5rjfPgLA8mziuwZn+9mhGmkE0wnEcXYDt5hj6eSGVEIjldDIJNP0yobkRHmFTDIdxu2gw+LMAqmEBsDrCFdy0Gz1AXg/PKXWbtAd+AB0t/LMxqalZpLA+W0dy7N58b97xafmwvjRNSUB5RILparolY1wlHl9hzv9QLnEyK+sOtto8Z/gCz17a24zZLyYAAAAAElFTkSuQmCC" alt="Poción de regeneración">
+      </section>
+
+      <div class="callout"><strong>La respuesta corta:</strong> casi todas las pociones útiles parten de una <strong>Poción rara</strong>, hecha con Botella de agua + Verruga del Nether. La gran excepción es la <strong>Poción de debilidad</strong>, que puede hacerse directamente con Botella de agua + Ojo de araña fermentado.</div>
+
+      <section id="montaje">
+        <div class="eyebrow">01 · Preparación</div>
+        <h2>Cómo empezar a destilar</h2>
+        <p class="lead">El Puesto de destilado tiene un espacio superior para el ingrediente, tres espacios inferiores para botellas y un espacio lateral para el combustible.</p>
+        <div class="steps">
+          <div class="step"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACSSURBVDjLY2AYfsDQ0PA/jP34Vtl/EMYmh9cAmMKbZ+z/gzC6OE4QFBQEVoRMYxMjaAiMfWW7FdwF6HIEQXR09P9Lzcb/QYaA2CQHJkgTSDPIEJINAGlIS0uDuwDEJskQkOLKysr/p5K1wIaA2GQZANIMMoQkA2DOnzx5MtwFIDZBb4SFhf1HxyBNIIxNbvDkHQDG8ZiuGAjMgQAAAABJRU5ErkJggg==" alt="Puesto de destilado"><h3>Fabrica el puesto</h3><p>1 Vara de Blaze sobre 3 bloques aceptados como material de piedra.</p></div>
+          <div class="step"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAADdSURBVDjLY2CgFZhqzPCfIs3//2/9T7IhMA1AGswG0US7CmzrP8P/yIZgyC9mwO0qbLYiK8blKhTF6JphNuJyFYri562ozoPZCDKEYICihzrM1v//88D0qR5OFDnsBtx0+v97vyGKxv+nIZr/P0BYsMIfS0DCnPpjMaoGMBtIg70BjCEQfamBGasBcG+AbP1/wwlsyNkwqCvKoGFx3+3/iUSG/6vtGHAb8rsHIgnTfDYVSL/y/f+qC+L8FZ7wmMGfFsCGpEJsA2kCaYbZjDM6keMayTB0TFLewMDoAAAOIPcIAZNhmQAAAABJRU5ErkJggg==" alt="Polvo de Blaze"><h3>Cárgalo</h3><p>El Polvo de Blaze va en el espacio lateral. Una unidad permite 20 operaciones de destilado.</p></div>
+          <div class="step"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABsSURBVDjLY2AY1OBKrud/EF7prvqfdM1Pv/8/s34pHG8+/4Y0Q0AaQDaD8HRzMdINgBkComP7D/0nKwwoMgAUBsh8kgyBaUb3N1GG4NJMtCEUG4BLY/faC8QFKC4FRBuATRFJmpENQcc0yXAAM5J7tGfko04AAAAASUVORK5CYII=" alt="Botella"><h3>Llena botellas</h3><p>Usa Botellas sobre agua o un caldero. Puedes procesar hasta 3 botellas a la vez con un solo ingrediente.</p></div>
+          <div class="step"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABeSURBVDjLY2AYBVjBPnuv/8tUDUCYAUTHiEqBMPEGQDWDDQBp9hMUA2HiDYBpQrYd2VCinA/VCLcdJE6UV0AaYJpxGUZUGCAbRHIgIttGViwgxwTUINJiAd0VwxwAAAx+U+N6+jM8AAAAAElFTkSuQmCC" alt="Verruga del Nether"><h3>Crea la base</h3><p>Coloca Verruga del Nether arriba para transformar las Botellas de agua en Pociones raras.</p></div>
+        </div>
+        <div class="recipe-flow" aria-label="Flujo básico de destilado">
+          <div class="node"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAR1JREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKrZPObI/83n3/xXNC/7r2he9l9Uxec/NkMwvHDl6ff/jvahDDXFGgwtvTcYuAQUGbgEFBl4hLUYdkztwnAJ1ljgEdaCs399e83AxiXKwCWgiNW1GC64/+orAwMDA0NFxWqGL68vM/z+8YGBgYGBISHNkoGZlZOwAasOXGP48vYaw7cP9yFOZOeFsz++OIvVFRggtv/Qf1EVH3gAdq+9gDMQcSZlbIoXF9rhzTtkAQBQ1HF3yVEdcAAAAABJRU5ErkJggg==" alt="Botella de agua">Botella de agua</div>
+          <span class="plus">+</span>
+          <div class="node"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABeSURBVDjLY2AYBVjBPnuv/8tUDUCYAUTHiEqBMPEGQDWDDQBp9hMUA2HiDYBpQrYd2VCinA/VCLcdJE6UV0AaYJpxGUZUGCAbRHIgIttGViwgxwTUINJiAd0VwxwAAAx+U+N6+jM8AAAAAElFTkSuQmCC" alt="Verruga del Nether">Verruga del Nether</div>
+          <span class="arrow">→</span>
+          <div class="node"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAR1JREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKrZPObI/83n3/xXNC/7r2he9l9Uxec/NkMwvHDl6ff/jvahDDXFGgwtvTcYuAQUGbgEFBl4hLUYdkztwnAJ1ljgEdaCs399e83AxiXKwCWgiNW1GC64/+orAwMDA0NFxWqGL68vM/z+8YGBgYGBISHNkoGZlZOwAasOXGP48vYaw7cP9yFOZOeFsz++OIvVFRggtv/Qf1EVH3gAdq+9gDMQcSZlbIoXF9rhzTtkAQBQ1HF3yVEdcAAAAABJRU5ErkJggg==" alt="Poción rara">Poción rara</div>
+          <span class="plus">+</span>
+          <div class="node"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABySURBVDjL3ZG7EcAgDEMZ0kOwomZwTU3PEkrlnC4h4VOkiCqa9yQfKf07gBNwbsOtNZJclwBOTSmVZplbcKyYklxhXQD4u0RvjuZS6u0NeF8S7SpReLjCLJ8tvRUqeTxDJQFH6xBWiVnugtNfqaJl8PMcL5YmYDtCVM0AAAAASUVORK5CYII=" alt="Ingrediente de efecto">Ingrediente de efecto</div>
+          <span class="arrow">→</span>
+          <div class="node"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAStJREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVlyuwBqIV55+/x/HzMrQ+PwDQ/beNQwMDAwM386dYvA0TWBYXGiHogfDC1eefv/vUJrN0Pj8A0O9pAADp7o2A6e6NgOXkRnD9tMLMFyCNRa4jMzg7N8vnjKwSkgzcKprY/Uqhgvuv/rKwMDAwFDy5DrD19PHGX6/ecXAwMDAkPKLl4GZm4ewAasOXGP4du4Uw/ebVyFOFBCCsz8f3odhANZAjO0/9H/76QVwr+QqWjB0rp2ENRBxJmVs0YaumSoAAKcvacCSul41AAAAAElFTkSuQmCC" alt="Poción final">Poción final</div>
+        </div>
+      </section>
+
+      <section id="ingredientes">
+        <div class="eyebrow">02 · Qué hace cada objeto</div>
+        <h2>Ingredientes universales</h2>
+        <div class="grid grid-3">
+          <div class="card"><div class="icon-line"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABeSURBVDjLY2AYBVjBPnuv/8tUDUCYAUTHiEqBMPEGQDWDDQBp9hMUA2HiDYBpQrYd2VCinA/VCLcdJE6UV0AaYJpxGUZUGCAbRHIgIttGViwgxwTUINJiAd0VwxwAAAx+U+N6+jM8AAAAAElFTkSuQmCC" alt="Verruga del Nether"><h3>Verruga del Nether</h3></div><p>Crea la <strong>Poción rara</strong>, la base de casi todas las recetas con efecto.</p></div>
+          <div class="card"><div class="icon-line"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACASURBVDjLY2AY3iCGneE/CJOtuYiB4f8qfkbSDQFpAGn8DzXAkZXhvy4DkYagawa5AsQmyhCYZhhGdgFIDq8hMD8j2wzSAOLD2CBxEzZW7IbAbIcFHLpBBF2hi2QLumaYN0AYpwvQDYFphtlKUDOyISAMUoyukeioRDaIZI10BwBKs37Fj8zsWAAAAABJRU5ErkJggg==" alt="Polvo de redstone"><h3>Polvo de redstone</h3></div><p>Alarga la duración cuando esa poción admite una versión extendida. No aumenta la potencia.</p></div>
+          <div class="card"><div class="icon-line"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACGSURBVDjLY2AY3qDOQ/E/CJOt+fUqv///98SRbghIA0jjzytzwPSWQof/UZYy/8nSDHIFiE2UITDNMIzsApAcXkNgfka2GaQBxEdm94XpYTcEZjss4NANIugKkCBIEqYZxIZpRjYEpwvQDYFpgtkKM4hgQIIUgDDIJnRbiY5KZINI1kh3AAAojtgxMN8RWQAAAABJRU5ErkJggg==" alt="Polvo de piedra luminosa"><h3>Polvo de piedra luminosa</h3></div><p>Aumenta el nivel del efecto cuando existe versión mejorada; generalmente reduce la duración.</p></div>
+          <div class="card"><div class="icon-line"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACBSURBVDjLY2AYBXiBK6vif2RMsuZqXvX/c+V0wRjEJtogSzYFuMbLszr+H4nPhhsCwloMAv+JMgCkGFkzjCbKAJhtyDaDDCNoALLfQXQqmzYYE+UFkOZQJiUwRjcERIPECTofZIgGpxIcIxtIUDM2ANIEMgDkCrININt2ZENoltwBTiF3gRqBEkQAAAAASUVORK5CYII=" alt="Ojo de araña fermentado"><h3>Ojo de araña fermentado</h3></div><p>Corrompe o invierte efectos. Se fabrica con Ojo de araña + Azúcar + Hongo marrón.</p></div>
+          <div class="card"><div class="icon-line"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAB/SURBVDjL3ZFLDsAgCES9kFdw746FJ/EYXJpmmkxCiK2fRRclISL6BtCU/m0iYvBjuLVmvfd9EQAAVfVea62Wc7YjGF0gXhIhTPcd4OxVhDP7ygCwZ4x8KWUswup8uCg07QJJVokwx4A/dhBFCLPqFPYicFyO4PJXeqFt8HO7ACF7rZsktOF4AAAAAElFTkSuQmCC" alt="Pólvora"><h3>Pólvora</h3></div><p>Convierte cualquier poción en su variante de salpicadura/arrojadiza.</p></div>
+          <div class="card"><div class="icon-line"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACWSURBVDjLY2AY1OBKrud/EF7prvqfdM1Pv/8/s34pHG8+/4Y0Q0AaQDaD8HRzMdINgBly1KP5f2z/of9khQHIgDU61eQZAAoDkGYYJskQkOazpUvA/gbRIAOI9gqyZpCme3OPgvG7S8/A4gQNQTYAphEZEzQA5mxkzd9evSPeAJACdM0wDBInKhxghpClGdkQdEyTDAcABHfz7kk2Ck4AAAAASUVORK5CYII=" alt="Aliento de dragón"><h3>Aliento de dragón</h3></div><p>Convierte una poción arrojadiza en Poción persistente, que deja una nube.</p></div>
+        </div>
+        <div class="callout warning"><strong>Redstone y piedra luminosa no se combinan.</strong> Para una misma poción debes elegir entre más duración o más potencia. Las cuatro pociones nuevas —Infestación, Exudación, Tejedura y Vendaval— no aceptan ninguna de las dos mejoras.</div>
+      </section>
+
+      <section id="bases">
+        <div class="eyebrow">03 · Antes del efecto</div>
+        <h2>Pociones base</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Nombre en es-MX</th><th>Cómo se obtiene</th><th>Para qué sirve</th><th>Supervivencia</th></tr></thead>
+            <tbody>
+              <tr><td><div class="object"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAR1JREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKrZPObI/83n3/xXNC/7r2he9l9Uxec/NkMwvHDl6ff/jvahDDXFGgwtvTcYuAQUGbgEFBl4hLUYdkztwnAJ1ljgEdaCs399e83AxiXKwCWgiNW1GC64/+orAwMDA0NFxWqGL68vM/z+8YGBgYGBISHNkoGZlZOwAasOXGP48vYaw7cP9yFOZOeFsz++OIvVFRggtv/Qf1EVH3gAdq+9gDMQcSZlbIoXF9rhzTtkAQBQ1HF3yVEdcAAAAABJRU5ErkJggg==" alt="Botella de agua"><strong>Botella de agua</strong></div></td><td>Botella + agua</td><td>Punto de partida de todo el sistema.</td><td class="yes">Sí</td></tr>
+              <tr><td><div class="object"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAR1JREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKrZPObI/83n3/xXNC/7r2he9l9Uxec/NkMwvHDl6ff/jvahDDXFGgwtvTcYuAQUGbgEFBl4hLUYdkztwnAJ1ljgEdaCs399e83AxiXKwCWgiNW1GC64/+orAwMDA0NFxWqGL68vM/z+8YGBgYGBISHNkoGZlZOwAasOXGP48vYaw7cP9yFOZOeFsz++OIvVFRggtv/Qf1EVH3gAdq+9gDMQcSZlbIoXF9rhzTtkAQBQ1HF3yVEdcAAAAABJRU5ErkJggg==" alt="Poción rara"><strong>Poción rara</strong></div></td><td>Botella de agua + Verruga del Nether</td><td>Base principal para pociones con efecto.</td><td class="yes">Sí</td></tr>
+              <tr><td><div class="object"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAR1JREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKrZPObI/83n3/xXNC/7r2he9l9Uxec/NkMwvHDl6ff/jvahDDXFGgwtvTcYuAQUGbgEFBl4hLUYdkztwnAJ1ljgEdaCs399e83AxiXKwCWgiNW1GC64/+orAwMDA0NFxWqGL68vM/z+8YGBgYGBISHNkoGZlZOwAasOXGP48vYaw7cP9yFOZOeFsz++OIvVFRggtv/Qf1EVH3gAdq+9gDMQcSZlbIoXF9rhzTtkAQBQ1HF3yVEdcAAAAABJRU5ErkJggg==" alt="Poción mundana"><strong>Poción mundana</strong></div></td><td>Botella de agua + varios ingredientes de efecto colocados demasiado pronto</td><td>No da efecto. Puede transformarse en Debilidad con Ojo de araña fermentado.</td><td class="yes">Sí</td></tr>
+              <tr><td><div class="object"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAR1JREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKrZPObI/83n3/xXNC/7r2he9l9Uxec/NkMwvHDl6ff/jvahDDXFGgwtvTcYuAQUGbgEFBl4hLUYdkztwnAJ1ljgEdaCs399e83AxiXKwCWgiNW1GC64/+orAwMDA0NFxWqGL68vM/z+8YGBgYGBISHNkoGZlZOwAasOXGP48vYaw7cP9yFOZOeFsz++OIvVFRggtv/Qf1EVH3gAdq+9gDMQcSZlbIoXF9rhzTtkAQBQ1HF3yVEdcAAAAABJRU5ErkJggg==" alt="Poción gruesa"><strong>Poción gruesa</strong></div></td><td>Botella de agua + Polvo de piedra luminosa</td><td>No da efecto. También puede terminar en Debilidad.</td><td class="yes">Sí</td></tr>
+              <tr><td><div class="object"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAR1JREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKrZPObI/83n3/xXNC/7r2he9l9Uxec/NkMwvHDl6ff/jvahDDXFGgwtvTcYuAQUGbgEFBl4hLUYdkztwnAJ1ljgEdaCs399e83AxiXKwCWgiNW1GC64/+orAwMDA0NFxWqGL68vM/z+8YGBgYGBISHNkoGZlZOwAasOXGP48vYaw7cP9yFOZOeFsz++OIvVFRggtv/Qf1EVH3gAdq+9gDMQcSZlbIoXF9rhzTtkAQBQ1HF3yVEdcAAAAABJRU5ErkJggg==" alt="Poción mundana grande"><strong>Poción mundana grande</strong></div></td><td>No se obtiene normalmente</td><td>Existe en Bedrock y puede convertirse en Debilidad extendida.</td><td class="no">Solo creativo/comandos</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="catalogo">
+        <div class="eyebrow">04 · Catálogo completo</div>
+        <h2>Todas las pociones con efecto</h2>
+        <p class="lead">Las duraciones son las de la poción bebible. “Extendida” significa Polvo de redstone; “mejorada” significa Polvo de piedra luminosa.</p>
+        <div class="filters">
+          <input id="search" type="search" placeholder="Buscar poción, ingrediente o efecto…" aria-label="Buscar">
+          <button class="active" data-filter="all">Todas</button>
+          <button data-filter="positive">Positivas</button>
+          <button data-filter="negative">Negativas</button>
+          <button data-filter="special">Especiales</button>
+        </div>
+        <div class="table-wrap">
+          <table id="potions-table">
+            <thead><tr><th>Poción</th><th>Receta</th><th>Duración</th><th>Extendida</th><th>Mejorada</th><th>Efecto</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="callout warning"><strong>Dos diferencias importantes de Bedrock:</strong> Regeneración extendida y Veneno extendido duran <strong>2:00</strong> (en Java duran 1:30). Veneno II dura <strong>0:22.5</strong> en Bedrock.</div>
+      </section>
+
+      <section id="variantes">
+        <div class="eyebrow">05 · Cómo se aplican</div>
+        <h2>Bebibles, arrojadizas y persistentes</h2>
+        <div class="grid grid-3">
+          <div class="card"><div class="icon-line"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAStJREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVlyuwBqIV55+/x/HzMrQ+PwDQ/beNQwMDAwM386dYvA0TWBYXGiHogfDC1eefv/vUJrN0Pj8A0O9pAADp7o2A6e6NgOXkRnD9tMLMFyCNRa4jMzg7N8vnjKwSkgzcKprY/Uqhgvuv/rKwMDAwFDy5DrD19PHGX6/ecXAwMDAkPKLl4GZm4ewAasOXGP4du4Uw/ebVyFOFBCCsz8f3odhANZAjO0/9H/76QVwr+QqWjB0rp2ENRBxJmVs0YaumSoAAKcvacCSul41AAAAAElFTkSuQmCC" alt="Poción bebible"><h3>Poción bebible</h3></div><p>La tomas y recibes el efecto completo. La botella vacía vuelve a tu inventario.</p></div>
+          <div class="card"><div class="icon-line"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAB/SURBVDjL3ZFLDsAgCES9kFdw746FJ/EYXJpmmkxCiK2fRRclISL6BtCU/m0iYvBjuLVmvfd9EQAAVfVea62Wc7YjGF0gXhIhTPcd4OxVhDP7ygCwZ4x8KWUswup8uCg07QJJVokwx4A/dhBFCLPqFPYicFyO4PJXeqFt8HO7ACF7rZsktOF4AAAAAElFTkSuQmCC" alt="Pólvora"><h3>De salpicadura / arrojadiza</h3></div><p>Agrega Pólvora. En Bedrock actual, un impacto directo aplica la duración completa; la duración disminuye cuanto más lejos cae el objetivo.</p></div>
+          <div class="card"><div class="icon-line"><img class="pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACWSURBVDjLY2AY1OBKrud/EF7prvqfdM1Pv/8/s34pHG8+/4Y0Q0AaQDaD8HRzMdINgBly1KP5f2z/of9khQHIgDU61eQZAAoDkGYYJskQkOazpUvA/gbRIAOI9gqyZpCme3OPgvG7S8/A4gQNQTYAphEZEzQA5mxkzd9evSPeAJACdM0wDBInKhxghpClGdkQdEyTDAcABHfz7kk2Ck4AAAAASUVORK5CYII=" alt="Aliento de dragón"><h3>Persistente</h3></div><p>Agrega Aliento de dragón a la arrojadiza. Deja una nube de hasta 30 s; cada aplicación dura ¼ de la poción normal.</p></div>
+        </div>
+        <details open><summary>Orden correcto de transformación</summary><div>Poción bebible + <strong>Pólvora</strong> → variante de salpicadura/arrojadiza. Luego esa variante + <strong>Aliento de dragón</strong> → Poción persistente. Puedes aplicar redstone o piedra luminosa antes o después de convertirla en arrojadiza; el resultado práctico es el mismo si la receta es válida.</div></details>
+        <details><summary>¿Por qué Minecraft mezcla “arrojadiza” y “de salpicadura”?</summary><div>No es una simplificación de esta guía: el archivo oficial de idioma <code>es_MX</code> usa ambas construcciones según la poción. El apéndice de nombres conserva exactamente esa inconsistencia.</div></details>
+      </section>
+
+      <section id="flechas">
+        <div class="eyebrow">06 · Exclusivo y eficiente en Bedrock</div>
+        <h2>Flechas con efecto mediante caldero</h2>
+        <p class="lead">En Bedrock puedes llenar un caldero con una poción y usar flechas normales sobre él. Un caldero lleno permite impregnar hasta <strong>64 flechas</strong>, equivalentes a unas 21.33 flechas por poción.</p>
+        <div class="grid grid-3">
+          <div class="card"><h3>1. Llena el caldero</h3><p>Cada botella aporta un tercio visual del caldero, aunque internamente Bedrock administra niveles más pequeños.</p></div>
+          <div class="card"><h3>2. Usa flechas</h3><p>Puedes impregnar hasta 16 por consumo de nivel; el máximo total de un caldero lleno es 64.</p></div>
+          <div class="card"><h3>3. Ten en cuenta la duración</h3><p>El efecto temporal de una flecha dura ⅛ de la poción equivalente. Infinidad no evita consumir flechas con efecto.</p></div>
+        </div>
+      </section>
+
+      <section id="consejos">
+        <div class="eyebrow">07 · Lo que suele salir mal</div>
+        <h2>Consejos y errores frecuentes</h2>
+        <div class="tips">
+          <div class="tip"><strong>Destila de a tres</strong><span>Un ingrediente y una carga de combustible procesan las tres ranuras inferiores al mismo tiempo.</span></div>
+          <div class="tip"><strong>No gastes la verruga en Debilidad</strong><span>Botella de agua + Ojo de araña fermentado ya produce Poción de debilidad.</span></div>
+          <div class="tip"><strong>Curación y Daño se invierten en no-muertos</strong><span>Zombis, esqueletos y otros no-muertos reciben daño con Curación y se curan con Daño.</span></div>
+          <div class="tip"><strong>El Veneno no mata por sí solo</strong><span>Reduce hasta medio corazón. El efecto Wither de Deterioro sí puede matar.</span></div>
+          <div class="tip"><strong>Invisibilidad no oculta todo</strong><span>La armadura y los objetos en la mano siguen siendo visibles, y los mobs pueden detectarte a corta distancia.</span></div>
+          <div class="tip"><strong>La leche borra los efectos</strong><span>Sirve tanto para efectos negativos como positivos; úsala con cuidado si llevas varias mejoras activas.</span></div>
+          <div class="tip"><strong>Agua contra Blazes</strong><span>Una Botella de agua de salpicadura causa daño a Blazes y Endermen. No reemplaza una buena arma, pero funciona.</span></div>
+          <div class="tip"><strong>Deterioro no se destila</strong><span>La Poción de deterioro es propia de Bedrock, pero solo aparece mediante creativo o comandos en el juego normal.</span></div>
+        </div>
+      </section>
+
+      <section id="nombres">
+        <div class="eyebrow">08 · Referencia lingüística</div>
+        <h2>Nombres oficiales en Español (México)</h2>
+        <p class="lead">Esta tabla reproduce los nombres del paquete de recursos de Bedrock 26.30. Sirve para encontrarlos exactamente como aparecen en el inventario.</p>
+        <div class="table-wrap">
+          <table id="names-table">
+            <thead><tr><th>Bebible</th><th>Salpicadura / arrojadiza</th><th>Persistente</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="fuentes">
+        <div class="eyebrow">09 · Verificación</div>
+        <h2>Fuentes y alcance</h2>
+        <ul class="source-list">
+          <li><a href="https://github.com/Mojang/bedrock-samples/">Mojang Bedrock Samples</a> y <a href="https://github.com/ZtechNetwork/MCBVanillaResourcePack">paquete de recursos vanilla 26.30</a>: iconos y archivo de idioma <code>es_MX.lang</code>.</li>
+          <li><a href="https://github.com/ZtechNetwork/MCBVanillaBehaviorPack">Paquete de comportamiento vanilla de Bedrock 26.30</a>: recetas de destilado verificadas directamente.</li>
+          <li><a href="https://learn.microsoft.com/en-us/minecraft/creator/reference/content/recipereference/examples/recipedefinitions/recipe_brewing_mix?view=minecraft-bedrock-stable">Microsoft Learn — recipe_brewing_mix</a>: funcionamiento oficial de las recetas de pociones de Bedrock.</li>
+          <li><a href="https://minecraft.wiki/w/Potion">Minecraft Wiki — Potion</a>, <a href="https://minecraft.wiki/w/Splash_Potion">Splash Potion</a>, <a href="https://minecraft.wiki/w/Lingering_Potion">Lingering Potion</a> y <a href="https://minecraft.wiki/w/Tipped_Arrow">Tipped Arrow</a>: duraciones, magnitudes de efectos y mecánicas comparadas por edición.</li>
+        </ul>
+        <div class="callout"><strong>Alcance:</strong> guía preparada para Minecraft Bedrock estable 26.30 en Español (México), consultada el 22/07/2026. Las previews 26.40 pueden contener cambios aún no presentes en un Realm estable.</div>
+      </section>
+
+      <footer>Guía de consulta no oficial. Minecraft, sus nombres e iconos pertenecen a Mojang Studios y Microsoft. Iconos incluidos únicamente para identificar objetos y efectos dentro del juego.</footer>
+    </main>
+  </div>
+
+  <script>
+    const potions = [
+      {cat:'positive', name:'Poción de regeneración', icon:'regeneration', ingredient:'Lágrima de Ghast', ingredientIcon:'ghast_tear', base:'Poción rara', duration:'0:45', extended:'2:00 (Bedrock)', strong:'II · 0:22.5', effect:'Recupera ½ corazón cada 2.5 s; en II, cada 1.25 s.', splash:'Poción de regeneración de salpicadura', linger:'Poción de regeneración persistente'},
+      {cat:'positive', name:'Poción de rapidez', icon:'moveSpeed', ingredient:'Azúcar', ingredientIcon:'sugar', base:'Poción rara', duration:'3:00', extended:'8:00', strong:'II · 1:30', effect:'Aumenta velocidad y distancia de salto 20%; nivel II, 40%.', splash:'Poción de rapidez de salpicadura', linger:'Poción de rapidez persistente'},
+      {cat:'positive', name:'Poción de resistencia al fuego', icon:'fireResistance', ingredient:'Crema de magma', ingredientIcon:'magma_cream', base:'Poción rara', duration:'3:00', extended:'8:00', strong:'—', effect:'Inmunidad al fuego, lava y la mayoría de daños relacionados con calor.', splash:'Poción arrojadiza de resistencia al fuego', linger:'Poción persistente de resistencia al fuego'},
+      {cat:'positive', name:'Poción de curación', icon:'heal', ingredient:'Rodaja de sandía resplandeciente', ingredientIcon:'melon_speckled', base:'Poción rara', duration:'Instantánea', extended:'—', strong:'II · instantánea', effect:'Restaura 2 corazones; nivel II restaura 4. Daña a no-muertos.', splash:'Poción de salpicadura de curación', linger:'Poción persistente de curación'},
+      {cat:'positive', name:'Poción de visión nocturna', icon:'nightVision', ingredient:'Zanahoria de oro', ingredientIcon:'carrot_golden', base:'Poción rara', duration:'3:00', extended:'8:00', strong:'—', effect:'Ilumina visualmente el entorno como si tuviera nivel de luz 15.', splash:'Poción de visión nocturna de salpicadura', linger:'Poción de visión nocturna persistente'},
+      {cat:'positive', name:'Poción de fuerza', icon:'damageBoost', ingredient:'Polvo de Blaze', ingredientIcon:'blaze_powder', base:'Poción rara', duration:'3:00', extended:'8:00', strong:'II · 1:30', effect:'Aumenta el daño cuerpo a cuerpo. En Bedrock el cálculo depende del daño base.', splash:'Poción de fuerza de salpicadura', linger:'Poción de fuerza persistente'},
+      {cat:'positive', name:'Poción de salto', icon:'jump', ingredient:'Pata de conejo', ingredientIcon:'rabbit_foot', base:'Poción rara', duration:'3:00', extended:'8:00', strong:'II · 1:30', effect:'Salto de 1.83 bloques y menos daño de caída; nivel II alcanza 2.51 bloques.', splash:'Poción de salto de salpicadura', linger:'Poción de salto persistente'},
+      {cat:'positive', name:'Poción de respiración', icon:'waterBreathing', ingredient:'Pez globo', ingredientIcon:'fish_pufferfish_raw', base:'Poción rara', duration:'3:00', extended:'8:00', strong:'—', effect:'La barra de oxígeno no baja bajo el agua.', splash:'Poción arrojadiza de respiración', linger:'Poción persistente de respiración'},
+      {cat:'positive', name:'Poción de invisibilidad', icon:'invisibility', ingredient:'Ojo de araña fermentado', ingredientIcon:'spider_eye_fermented', base:'Poción de visión nocturna', duration:'3:00', extended:'8:00', strong:'—', effect:'Oculta la entidad, pero no armadura ni objetos equipados.', splash:'Poción de invisibilidad de salpicadura', linger:'Poción de invisibilidad persistente'},
+      {cat:'positive', name:'Poción de caída lenta', icon:'slowFall', ingredient:'Membrana de fantasma', ingredientIcon:'phantom_membrane', base:'Poción rara', duration:'1:30', extended:'4:00', strong:'—', effect:'Caes lentamente y no recibes daño al tocar el suelo.', splash:'Poción de caída lenta de salpicadura', linger:'Poción de caída lenta persistente'},
+      {cat:'negative', name:'Poción de veneno', icon:'poison', ingredient:'Ojo de araña', ingredientIcon:'spider_eye', base:'Poción rara', duration:'0:45', extended:'2:00 (Bedrock)', strong:'II · 0:22.5', effect:'Daño periódico, pero no baja de medio corazón.', splash:'Poción de veneno de salpicadura', linger:'Poción de veneno persistente'},
+      {cat:'negative', name:'Poción de debilidad', icon:'weakness', ingredient:'Ojo de araña fermentado', ingredientIcon:'spider_eye_fermented', base:'Botella de agua', duration:'1:30', extended:'4:00', strong:'—', effect:'Reduce el daño cuerpo a cuerpo. Se usa para curar aldeanos zombis.', splash:'Poción de debilidad de salpicadura', linger:'Poción de debilidad persistente'},
+      {cat:'negative', name:'Poción de lentitud', icon:'moveSlowdown', ingredient:'Ojo de araña fermentado', ingredientIcon:'spider_eye_fermented', base:'Poción de rapidez o de salto', duration:'1:30', extended:'4:00', strong:'IV · 0:20', effect:'Reduce velocidad 15%; nivel IV la reduce 60%.', splash:'Poción de lentitud de salpicadura', linger:'Poción de lentitud persistente'},
+      {cat:'negative', name:'Poción de daño', icon:'harm', ingredient:'Ojo de araña fermentado', ingredientIcon:'spider_eye_fermented', base:'Poción de curación o de veneno', duration:'Instantánea', extended:'—', strong:'II · instantánea', effect:'Causa 3 corazones de daño; nivel II, 6. Cura a no-muertos.', splash:'Poción de salpicadura de daño', linger:'Poción persistente de daño'},
+      {cat:'special', name:'Poción de deterioro', icon:'wither', ingredient:'No tiene receta', ingredientIcon:'potion_bottle_wither', base:'Creativo o comandos', duration:'0:40', extended:'—', strong:'—', effect:'Aplica Wither: ½ corazón por segundo y sí puede matar. Exclusiva de Bedrock.', splash:'Poción de deterioro de salpicadura', linger:'Poción de deterioro persistente'},
+      {cat:'negative', name:'Poción de infestación', icon:'infested', ingredient:'Piedra', ingredientIcon:'stone', base:'Poción rara', duration:'3:00', extended:'—', strong:'—', effect:'Al recibir daño, 10% de probabilidad de generar 1–3 peces plateados.', splash:'Poción de salpicadura de infestación', linger:'Poción persistente de infestación'},
+      {cat:'negative', name:'Poción de exudación', icon:'oozing', ingredient:'Bloque de slime', ingredientIcon:'slime', base:'Poción rara', duration:'3:00', extended:'—', strong:'—', effect:'Al morir la entidad afectada, aparecen 2 limos medianos.', splash:'Poción arrojadiza de exudación', linger:'Poción persistente de exudación'},
+      {cat:'negative', name:'Poción de tejedura', icon:'weaving', ingredient:'Telaraña', ingredientIcon:'web', base:'Poción rara', duration:'3:00', extended:'—', strong:'—', effect:'Reduce la ralentización en telarañas y crea 2–3 telarañas al morir.', splash:'Poción arrojadiza de tejedura', linger:'Poción persistente de tejedura'},
+      {cat:'negative', name:'Poción de vendaval', icon:'windCharged', ingredient:'Vara de vorágine', ingredientIcon:'breeze_rod', base:'Poción rara', duration:'3:00', extended:'—', strong:'—', effect:'Al morir la entidad afectada, genera una ráfaga de viento.', splash:'Poción arrojadiza de vendaval', linger:'Poción persistente de vendaval'},
+      {cat:'special', name:'Poción del maestro tortuga', icon:'turtleMaster', ingredient:'Caparazón de tortuga', ingredientIcon:'turtle_helmet', base:'Poción rara', duration:'0:20', extended:'0:40', strong:'II · 0:20', effect:'Lentitud IV + Resistencia III; mejorada: Lentitud VI + Resistencia IV.', splash:'Poción arrojadiza del maestro tortuga', linger:'Poción persistente del maestro tortuga'}
+    ]
+
+    const categoryLabel = { positive: 'Positiva', negative: 'Negativa', special: 'Especial' }
+    const tbody = document.querySelector('#potions-table tbody')
+    const namesBody = document.querySelector('#names-table tbody')
+    const embeddedAssets = {"blaze_powder.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAADdSURBVDjLY2CgFZhqzPCfIs3//2/9T7IhMA1AGswG0US7CmzrP8P/yIZgyC9mwO0qbLYiK8blKhTF6JphNuJyFYri562ozoPZCDKEYICihzrM1v//88D0qR5OFDnsBtx0+v97vyGKxv+nIZr/P0BYsMIfS0DCnPpjMaoGMBtIg70BjCEQfamBGasBcG+AbP1/wwlsyNkwqCvKoGFx3+3/iUSG/6vtGHAb8rsHIgnTfDYVSL/y/f+qC+L8FZ7wmMGfFsCGpEJsA2kCaYbZjDM6keMayTB0TFLewMDoAAAOIPcIAZNhmQAAAABJRU5ErkJggg==","breeze_rod.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAWUlEQVQ4y2NgoDcIz5n73y6u/T/ZmrcuPfW/qunIf/2g+v8ka96//iRYM8kugGme2nuZPM0wZ9NfM8V+Jju0qRJV9NUMCiSyQxsEcspWk5dIYADkZLI1UwoARZuCQX5oLrMAAAAASUVORK5CYII=","brewing_stand.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACSSURBVDjLY2AYfsDQ0PA/jP34Vtl/EMYmh9cAmMKbZ+z/gzC6OE4QFBQEVoRMYxMjaAiMfWW7FdwF6HIEQXR09P9Lzcb/QYaA2CQHJkgTSDPIEJINAGlIS0uDuwDEJskQkOLKysr/p5K1wIaA2GQZANIMMoQkA2DOnzx5MtwFIDZBb4SFhf1HxyBNIIxNbvDkHQDG8ZiuGAjMgQAAAABJRU5ErkJggg==","carrot_golden.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACiSURBVDjLY2CgJSgM4PgPwuG2bP/JNgSkGWRIsCbEEKIMRNaEi02UzSCF6JqJ9k6IEOf/N6dd/99eJAw2AGaIgRgDYRdsShEEa371LhyMQYaADIRphrkOrwEgjf/+PwPTMJcgG4LTJSDNIMUgzSAM0wwSBxkA8w5B25FtRrYdpAanATDbkTXDbCYq5GGBh2wrWZpJshXd+STZip5wyNJIKQAA9e/FQJRIJGsAAAAASUVORK5CYII=","dragons_breath.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACWSURBVDjLY2AY1OBKrud/EF7prvqfdM1Pv/8/s34pHG8+/4Y0Q0AaQDaD8HRzMdINgBly1KP5f2z/of9khQHIgDU61eQZAAoDkGYYJskQkOazpUvA/gbRIAOI9gqyZpCme3OPgvG7S8/A4gQNQTYAphEZEzQA5mxkzd9evSPeAJACdM0wDBInKhxghpClGdkQdEyTDAcABHfz7kk2Ck4AAAAASUVORK5CYII=","fish_pufferfish_raw.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACdklEQVQ4ja2TT0jTYRyHn1d/08QxG7ahtsqZTJ1DIR3JEESiLCq9CAnlsUsQ3qJLmv2DMA8jsqBbUnlQcGpEkgxBxNQiK4dJm5Z/Jks3mpOhm70dhjOzW32P7/s+n8/Dy/vCP47422LkuZqxaQWtRpCbEZFfllQiEJRYTVFuCkf83I26YyT8CdvP65iYTcZqisr+cUW6/Rr6xxVpNUXl64k96Oa6ACRAY8fAtsFWK8DYtEpW2VTklfoBiHoU2vpSACgqSMKZ+wSAb+s/RTxguHkvVlNUtvWlcOlMGCUnGofdfk3c8Fl6OwBDq5scTBIiAWDqQRbhSKylyqbC7dcQ9ShxOOfiLMcfquMggC08Ko4sPkI0dgywf6mLClW3fDUc4d6EFve7T3geZ+MN7Lzj8sM/GHKncSWplWZ/IynqNURjx4AESO+to8qmwhsQZGol3oCg+PR1AHzDTXgDgnAoFQCDJQ/nyxG0GkUkbCmtnO3AMxfT3IKL61sorm9hI62EcCgVgyWPE5fbMFc2EFxbZ8EXRtmnCDG0uilXA37KgEytxDOnxjfcxIurJbHGwmoMhaDRGwn6Zpif7AFAn5mOshyV5PhHRIZvlLfuJVl2rpVcvRGAoG8mDmn0RlxOO+bKBhzNg9TUVjDlmiVxpredW6ULHEhckd7lEFm6dXTGMgCSU7U7QgyWk7icdj67vgKIfHP29ktcXA4JS1GBcHQOEvTNAOBy2ncZODpj7QBFF3p3/oXuO6coOloun96/S01tBYbCagDmJ3twdA4CkGc+JADyzdm7AzwDt/nwZojNjSCu9x/l73s1tRWMjbjE4vx3rnUH+W/zCywzD2wyvIMOAAAAAElFTkSuQmCC","ghast_tear.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABNSURBVDjLY2AYBXiBRUTEf3Mvr/9ka956+/b/+YcPk2cIyIDzHz+CDSHZAJjtIANAmGRXwGwHAbINALkABMgOB5AGigIRZgjZmkcQAAAtCVvnkBs0tQAAAABJRU5ErkJggg==","glowstone_dust.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACGSURBVDjLY2AY3qDOQ/E/CJOt+fUqv///98SRbghIA0jjzytzwPSWQof/UZYy/8nSDHIFiE2UITDNMIzsApAcXkNgfka2GaQBxEdm94XpYTcEZjss4NANIugKkCBIEqYZxIZpRjYEpwvQDYFpgtkKM4hgQIIUgDDIJnRbiY5KZINI1kh3AAAojtgxMN8RWQAAAABJRU5ErkJggg==","gunpowder.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAB/SURBVDjL3ZFLDsAgCES9kFdw746FJ/EYXJpmmkxCiK2fRRclISL6BtCU/m0iYvBjuLVmvfd9EQAAVfVea62Wc7YjGF0gXhIhTPcd4OxVhDP7ygCwZ4x8KWUswup8uCg07QJJVokwx4A/dhBFCLPqFPYicFyO4PJXeqFt8HO7ACF7rZsktOF4AAAAAElFTkSuQmCC","magma_cream.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAC9SURBVDjLY2AYtCCoVPM/MiZZY/cqx/9Ljnn9P3YnHEyDxBIlpP4TpfnLSz8wBmmGYZCBBA0BKQAp/vfvHxijG/TstD5uA2DOBmlANuDVcnWw5qutCv/3Okj83yJhhd0QkAEwPyPbDNIIYoNsBxlwNFYCtwHIfoYZBHIBsu0gGq8ByLaDNINsBhkAwiDbcXoBZghIAyzAkG0HacZpOwyAJEGGgDSCMEgDus0E0wJMEUgDSCNJmrEZRLJGugMArEAOhRzbSn4AAAAASUVORK5CYII=","melon_speckled.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAADJSURBVDjLY2AYdGBWicT/jS0y/8nWfGa6wv9761b932+o/J8sm/+fPgbWfNKTgzRDYLb/f/v8//U60f8fT7L+Xy/GTbwhIANAmkAGgDTCNB+00SXOELgLgF4AaQa5AgRgXiFoCCwMYAEIwiBDQDSyi3AaEBfCDTfgVGEsXBPIBSCvwQwiaAjMG8gaQIaA2CCD8MYOyADksAC5BOYdZC+BXIkzscEMgXkHhEGGgWIHjIFskAUgdXi9gmwQCIM0wTBezdgMQsdUzXwA9mr4eFF28iQAAAAASUVORK5CYII=","nether_wart.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABeSURBVDjLY2AYBVjBPnuv/8tUDUCYAUTHiEqBMPEGQDWDDQBp9hMUA2HiDYBpQrYd2VCinA/VCLcdJE6UV0AaYJpxGUZUGCAbRHIgIttGViwgxwTUINJiAd0VwxwAAAx+U+N6+jM8AAAAAElFTkSuQmCC","phantom_membrane.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAADMSURBVDhPzVIxCgJBDLwv+gVrRbBTQUEL4RA7K20sfYKd4CsE/7LexJswyek1Ni4MbLKZmSR3VfUXp5TSi/V4WojlcBHePgqw+HLc2v1+PZfn42ZQsQZdARKATN6v5h7jPhmM3i1kMgmnemOFTSeB3CugBSQBjNs9GIIA3dVNHZFnfNjNjIyFBoHsqqMomQK+RJ1dnRh/az8IcG4QFLkjdQ8C2j6d81fJAr4DJJQMYiZzdm3f/0QoIZmL2kKHkjsCFBGiFWlO80Hgl/MCwFABESupg9oAAAAASUVORK5CYII=","potion_bottle_damageBoost.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAARdJREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVlyuwBqIV55+/6/xgJNhO9cbhqcrRBgYGBgYTl1lYPjtfIhhcaEdih4ML1x5+v1/XzpEs+c3EQZtRQYGbUUGBjNtBgbWvXYYLsEaBmbaCPbT1xAaZgg6wDDg/quvDAwMDAwCJ0UYjl9mYHj1HiJ+QvQCAw8nEQasOnCN4dRVBoar9yF8IT4Ee98ZTAOwBmJs/6H/rHvt4E7+bHaB4fp8A6yBiDMpY4s2dM1UAQDUcGGxRSikPgAAAABJRU5ErkJggg==","potion_bottle_drinkable.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAR1JREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKrZPObI/83n3/xXNC/7r2he9l9Uxec/NkMwvHDl6ff/jvahDDXFGgwtvTcYuAQUGbgEFBl4hLUYdkztwnAJ1ljgEdaCs399e83AxiXKwCWgiNW1GC64/+orAwMDA0NFxWqGL68vM/z+8YGBgYGBISHNkoGZlZOwAasOXGP48vYaw7cP9yFOZOeFsz++OIvVFRggtv/Qf1EVH3gAdq+9gDMQcSZlbIoXF9rhzTtkAQBQ1HF3yVEdcAAAAABJRU5ErkJggg==","potion_bottle_empty.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABsSURBVDjLY2AY1OBKrud/EF7prvqfdM1Pv/8/s34pHG8+/4Y0Q0AaQDaD8HRzMdINgBkComP7D/0nKwwoMgAUBsh8kgyBaUb3N1GG4NJMtCEUG4BLY/faC8QFKC4FRBuATRFJmpENQcc0yXAAM5J7tGfko04AAAAASUVORK5CYII=","potion_bottle_fireResistance.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAR5JREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVlyuwBqIV55+/6+xiZNhu8Ubhqc9IgwMDAwMpx4wMPwOOcSwuNAORQ+GF648/f6/Lwyi2fOECIO2FAODthQDg5kCAwPrGjsMl2ANAzMFBPvpBwgNMwQdYBhw/9VXBgYGBgaBZSIMx+8xMLz6DBE/YXGBgYcd0wCMdLDqwDUG1gcIW4W4GBiuPoPw991kYGDQRVWPNRBj+w/9Z11jB3fy56ALDNf7DLAGIs6kjC3a0DVTBQAAkltfgTOkzsEAAAAASUVORK5CYII=","potion_bottle_harm.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAASdJREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKp5eUrm/83n3/xPtbH/n2pj/99RXfM/NkMwvHDl6ff/uU5GDDzZzQxfptYyyAgKMcgICjGoiIoxPJmRjuESrLGgIioGZ7/7+pVBiJubQUZQiIGBgYHhByEX3H/1lYGBgYHhXF0qw62XLxg+/fjOwMDAwMCVUM/AwcqKYRmGAasOXGO48/oVw5P37xgYGBgYeNjZ4ewrz55iczAmiO0/9N9RXRMegN1rL+AMRJxJGZvixYV2ePMOWQAAixJzDZNQPhUAAAAASUVORK5CYII=","potion_bottle_heal.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAARhJREFUOI3Fk7FLw0AYxX8GqaIkIJgpDkK7OImDq6sIOjuV/AUO/gfuDgXp0N1N0CU4OBRKJ3EwDrGCCp2qUIPoEC8Ww+cWqLkL1cU33X337n3fPd7Bf2Oq7DDa2xKA2/tHdi8etFyjQDRQkl6d5fvn5U121hYL/GmTQH+Y8NE6AOD17Z2lVq9sWD2CMBaAeqMrJo71e9kJEQ3UWNeyKbSXk1pVgjCWputK03XFd2yZSCQaKPEdW4IwlqRWlbbnSdvzjCJaD9ZnZvP1U/YFwEqlMlY3CvSHCQBz26tcqpSXLAPg+uiceasYm0IOTjo9rM8077pgWdyNRgB0lNK/+yfqja74jp0beHh6YzTRGGUd+Xh/o/Tv/AnfkwR1nHyUX20AAAAASUVORK5CYII=","potion_bottle_infested.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATFJREFUOI3FkjFIw0AYhT9FitShDsJBkNBO0tElDgUdxcEt6NIuAcHFQXDXXaWDSydBHARRF0V0k45ddIgtaiQ0EKVFpMXWuJ1boOZSFQTf9B/37t37//fDf2Og36W9MicBbu8dFi8flNxYAdsP5EflJDw/p2eZnxyL8IfiBNxml/fSBgCvrTbjpWo/s2qcXr9IgEKxLOM4g7+X/SFsP+j5Nc6Fcoi2H8jzsx2yhsXe9jIAnusxYW6xvzrd8ybSgu0H0lqYIWtY1Cq7CE0gNIGe0bk7Wos4UaagZ/SwbrfapEZTCE0oW404cJtdAC4O1qk/1um8dQBITy2RGE58L3B4VcVzPRpPDQCSI8mwdmqO0kUEhWJZGjlDmnlTmnlTbh7fSCNnSFUSsausIn9N4E/wCU5mbiigKiX8AAAAAElFTkSuQmCC","potion_bottle_invisibility.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAShJREFUOI3FkjFIw1AQhr+IIBIQAp2CoIPLGztkVNzEwdmpm+Dk4Ojm7GDXDt0cBAdBnNxCcUkzRDA2oIG6JEKjYoeaFgrPLRDfS1EQ/Kd73H///Xf34L9hzEqGB9sS4OExZvfmScutFAiTXI67l8X7ZXWLnXpN4c9XCfQHIz5bxwC8fwxZbvVmmdXjOniVAI1mR1Zx5n4v+0OESV7qWuVCu8QwyeXK0hQ3nvB8ew6A7/vI+h5nhxulGmWEMMnlydE+bjxhc20BIQRCCBzHwQjaihPtFRzHKeI0TbFtGyEEAN1pmas46A9GACy+3eF5HlmWARAMa5imqTRTBC7cHr7vE0URAJZlFbHruoqAdomNZkcaQbsYZWyvc391ql1i5VfWne178Z/gCxC9bgvG9tLjAAAAAElFTkSuQmCC","potion_bottle_jump.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAS1JREFUOI3FkjFIw1AQhj8lCELpUDSCdnByaOjgkklci4OzU6duFYeMDoLOItmku5uDizh0KdLB4lsckmawYgcbhSCi0hoH4blIIL6XoiD4T3e8//777+7Bf2Ni3KO/tSYButc3bDR7Wm6mgB/G8l2cJPnDYoX15RmFb2QJ9KMRb41dAJ6eXyg2gnFm9Ti9epQAVbctsziTv5f9IfwwTnXNcqFdoh/Gcmlun6ZXZ3BZA0CIAR9llyNnNVWjjOCHsTzYWaHp1amUDylZJiXLxLaLGJ6jONFewbaLSXwfvjK/kKdkmQBcxGmu4qAfjQDID7fpdO6IvnIRbZLLTSnNFIHj8wAhBgTdCIBCYTqJW61bRUC7xKrblobnJKMMZ/cIzmraJWZ+Zd3Zvhf/CT4BaNJswqcLy8QAAAAASUVORK5CYII=","potion_bottle_moveSlowdown.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAASxJREFUOI3Fkr1LA0EUxH+KjYWJEOEaOTSwKKliZ2UnomhtlYi9Fv4HVrZpgkQrwS6FjZFgpaQQsTHIeYRcMHBwSmL8ODGe3dodxN0LCoJTvWXnzc68t/DfGOh3aW0uSoDbeoPVU0fLjRSwvEB+Xh2F54eJBVZmxhT+UJRAs93lo7ANwPOrz3jB7mdWj+PrjgTI5CoyijP4e9kfwvKCnlejXGiHaHmBPLm8J5WMc7C3D4DrVJle3uBwa66nR4lgeYFcz66RSsax73wMU2CYAlOkqZXyihPtFkyRDuu3pxaxhIFhCm1URaDZ7gJQLp8B8O53iCUMJqcEL4+eIqBEKJ7buE6VlusAMDwyGtaNmwtFQDvETK4ia6V8GGV2foni7o52iJFfWbe2781/gi++YGkUN1yEbwAAAABJRU5ErkJggg==","potion_bottle_moveSpeed.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAStJREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVlyuwBqIV55+/x/HzMrQ+PwDQ/beNQwMDAwM386dYvA0TWBYXGiHogfDC1eefv/vUJrN0Pj8A0O9pAADp7o2A6e6NgOXkRnD9tMLMFyCNRa4jMzg7N8vnjKwSkgzcKprY/Uqhgvuv/rKwMDAwFDy5DrD19PHGX6/ecXAwMDAkPKLl4GZm4ewAasOXGP4du4Uw/ebVyFOFBCCsz8f3odhANZAjO0/9H/76QVwr+QqWjB0rp2ENRBxJmVs0YaumSoAAKcvacCSul41AAAAAElFTkSuQmCC","potion_bottle_nightVision.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATFJREFUOI3Fkj1IA0EQhT9FQfEHojEptLg6R0CblLZiYWGVKo2QUsFGsBDEJmUKm4ClnYWNWNj4k0Y8EIvbXKFCtDgkx8Uo8Ty7tRAOzt0LCoKvmmXevHkzs/Df6OuVFKuLEqBxe0/x5E7LTRQQbig/rMPo/WQssDSXVvgDSQJNL+C9tg3A88srMzWnl1k9jm58CVCq1mUSp//3sj+EcMNY1yQX2iUKN5R+do2uXeHiahkAx/KYzO+xvz4fq1FGEG4oN7Zm6doVxvKbGGYKw0yRK2Ro22XFifYKuUImin03ID09gmGmAGiFca7ioOkFADy+rSAuW3S8r4rQ22F4dFBppggcnDs4lsdDowPA+MRQFF+fuoqAdomlal227XI0SnZql7PjonaJiV9Zd7bvxX+CT0HRbaULjnAjAAAAAElFTkSuQmCC","potion_bottle_oozing.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAS9JREFUOI3FkrtLw1AYxX+KoEgHFR+QZAhdS0GXjq4qxa3g1NlJioNjQPAPqGN3F+kggnRwEYmDmMUhaUEraQejEETro8btOgiBeG+KguCZvnvvuec73wP+G0ODHr2NFQHQvL5h7bit5KYKeEEkPpyD+HxvLrG6MC3xR9IEOmGf99o2AI+9Z4xaa5BZNY4uHwRAuWqLNM7w72V/CC+IElnTXCib6AWROJurY7hF9i+2AOg6Ptn8Dnubi4k/UgleEIl1axnDLXKbb6DldLScjlnI4ruW5EQ5BbOQjeNe8MSEPomW078uoiRXctAJ+wDYb7v4521ewxcAZsMSo5kxKZkkUD9t0XV87poBAONTmTi+OpF3QdnEctUWvmvFpczPVDhsVJRNTF1l1di+f/4TfAIoDWrNiP4eiAAAAABJRU5ErkJggg==","potion_bottle_poison.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATZJREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVlyuwBqIV55+/79xTzaDnl4Xw7xJ/gwMDAwMj++9ZtAMmMOwuNAORQ+GF648/f4/IUqfQU+vi+HSpTIGMWlBBjFpQQZZJVGG6xtSMFyCNRZklUTh7E/vvzLwCXIziEkLYvUqhgvuv/rKwMDAwLBlbQLDo9uvGL58+sHAwMDAoGLYwsDGwUrYgFUHrjE8vvea4dXT9wwMDAwMXDzscPbda8+wugIDxPYf+m9ir/Y/MNH6f2Ci9f/utRf+m9ir/ccWEziTMjbF6DFAFQAA3QRtxeXtThsAAAAASUVORK5CYII=","potion_bottle_regeneration.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATFJREFUOI3FkjFLw1AUhT+liIq0KBUcDEjp1sk/0KWDiHR26qyIDkqJoEt+gNClYHc3BwedHAQpgqCDFJIONdhBgrENrSnUdHsOQqB9L0VB8Ez3cc8999x7H/w3JsYlzb11AWA1bDavn5XcSAHTCcTg4SJ8v62skV9NSvxYlECz1eezYgDQ+fBZrtTHmVXj6skTAIVSVURxJn8v+0OYTjDUNcqFcommE4hAv8Qt5rjfPgLA8mziuwZn+9mhGmkE0wnEcXYDt5hj6eSGVEIjldDIJNP0yobkRHmFTDIdxu2gw+LMAqmEBsDrCFdy0Gz1AXg/PKXWbtAd+AB0t/LMxqalZpLA+W0dy7N58b97xafmwvjRNSUB5RILparolY1wlHl9hzv9QLnEyK+sOtto8Z/gCz17a24zZLyYAAAAAElFTkSuQmCC","potion_bottle_slowFall.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAS1JREFUOI3Fkj1Iw1AUhb+Igz8UEYqDCBGyNENBKV39mcTBwcmp4C4ObuLkIB1cunbv5tDFyS3N1hapJWks/lAdohBLqUNNt+cWaN9LURA8033cc889994H/w1tUtI93hUArYcnDm4eldxYAdcPxbBWjt7vqzvsrScl/nScQCcY8FU8B6DX/2Sl6E0yq8Z1oysAcgVbxHGmfi/7Q7h+ONI1zoVyia4fCj2wscjwUr4AoO60EZtnlE42RmqkEVw/FJdH+1hk2OIW09AxDZ1sOoVWyUtOlFfIplNR/BZ0WV5KYho6ALUxruSgEwwAmG2WqDY9Pnp9ABqJbebnZqRmksCV5VF32tw/vwKwuJCIYqt6Jwkol5gr2EKr5KNRhmuHOKVT5RJjv7LqbOPFf4JvYxppzqnLNpgAAAAASUVORK5CYII=","potion_bottle_turtleMaster.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAASxJREFUOI3FkjFLw1AUhT9FlCqig4EIoXZL10xurkWhdHQKoqPg4C/QRXDrIqUgDpJNQRAH6SalkyBZYjFWLNaGSq1i0Ri35xaoeakKgme6j3fueeee++C/MdDv0lmbFwCX1zcslmpSbqyA4wXi4/woPLdSGbLGVIQ/FCdQb/u8FzcBeH7pohWr/czKcWJ3BICZL4s4zuDvZX8Ixwt6Xo1zIQ3R8QJxutshnUuwv7EHQKNpo5urWOtzPT2RERwvECvZZdK5BFfHAaqioyo6Sc3AtQoRJ9ItJDUjrLuvLSbGp1EVXTpqxEG97QNQ2qlwd3/Bm/8EwMxCipHhse8FDs6qNJo2D48uAKOJybCu3VYiAtIQzXxZuFYhHGV2KcPh1rY0xNivLFvb1+Y/wSdE42ilJQgHiwAAAABJRU5ErkJggg==","potion_bottle_waterBreathing.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAS9JREFUOI3FkjFIw0AYhT9FUBS0g60ELKSYpQhBZ9FVHJwcnLK6ibiJk5vdunZ3qDjo0MlNC0VxsBBiI9oSQUKxaolKTcDh3AJtLkVB8E3/ce9/997/H/w3BvpdWpsrAuDmrs766b2UGytgub4Iro7Dc1NdZnV+MsIfihNwWh0+C3sAtL03pgu1fmblKFVfBICRL4s4zuDvZX8Iy/W7Xo1zIR2i5fqi/H5BOtA5LO0D4Jg2Mws7HGwvdfVEIliuLza21kgHOo8jJoqmomgqGT1Lo5KLOJFuIaNnw9prPZNIJVE0VRo1IuC0OgCc20UAPl49EqkkU8OLtEef+OrhRyIcndVwTJtm/QGAsYnxsL69vI44kA7RyJdFo5ILo8zNGpwUd6VDjP3KsrX1Nv8JvgH+0GpLW57jmgAAAABJRU5ErkJggg==","potion_bottle_weakness.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAARRJREFUOI3FkzFLw0AYhh+NgQyVOjgewT1QcMpQcA1i3QSn/gMd9Bc4uDl0rbOboEsmN+noEofYQYVOQSixJtia2OVzC0gusbr4Tt9x7z3fy3d38N9aqtsMD7cF4OHxmf2bJ623EhBGmeR318X6ZcNjd3O95F+pAozGMz76JwBMkhTVH9aF1csPYgHo9gZS5Vn+PXZBhVH2rWtdCu1hr+OJH8TitBxxWo4oW8lCkDDKRNlK/CAWr+OJ23bFbbuVEO0tNNeaRZ3nOZZl0VhtaBuWhjgazwA4PdgheUuYf84B2Ds+xzCMnwGXt0PSJGX6PgXANM2inrxOtClK6vYGomxVDPDs6r5yiJVPWWe+ONqq/Tt/0hf0pXXqJmQx5gAAAABJRU5ErkJggg==","potion_bottle_weaving.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAASJJREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKq5PCPy/+bzb/572Jv997A3+6+nofQfmyEYXrjy9Pv/KGdtBpv0yQxHZuYyiAjyM4gI8jNIiYswXJyZgOESrLEgJS4CZ3/++o2Bl5uLQUSQH6trMVxw/9VXBgYGBoaVjZEMT1+8Yfj2/ScDAwMDg35sNwMrK6Z9GAasOnCN4dnLNwxv3n9kYGBgYODgYIOzHz55gdUVGCC2/9B/PQ0leAB2r72AMxBxJmVsihcX2uHNO2QBAF4LcNTSXo6BAAAAAElFTkSuQmCC","potion_bottle_windCharged.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAS1JREFUOI3FkjFLw1AUhb9KF0FbsM1ihZixZHKwODm4iIOzU8FREAfBH+A/KDh1DDgp4uLkYJCOQXRJWrBKdAhKUq0dahQLzy3QvpeiIHim+7jnnnvuvQ/+G5lxSXdnTQB4t3dsnLeV3FQBN4jFh3OavJ/mV1lfKEr8bJqAH/Z5r+8D8PrWY67eHGdWjbObjgCo1hoijTPxe9kfwg3ioa5pLpRLdINYPLQ/EfkB9tEJAC3PQVvZ5HB3eahGGsENYrG3tY3ID8j0suiGiW6YlM0KkW1JTpRXKJuVJH6JAgpaCd0wAeiMcCUBP+wDcO+0AOh2Qwpaia/iNJPPU1IzaYTjyyYtz+HR9wDI5WaS+PrKlgSUS6zWGiKyrWSU2cUlLqwD5RJTv7LqbKPFf4Jv60trpiLSqs0AAAAASUVORK5CYII=","potion_bottle_wither.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAASdJREFUOI1jYBhowIhP8kqu538GBgaGq7fuMITvvI1VLU4Drjz9/v/HqXVw/nMFdwZfQxEM9Sy4DLj/6ivDtxkNDAwMDAzvPnxkkJlxDZ9jsYPN59/8Z2BgYIjtP/Qflxom0o0lElx5+h3FVnyuwKq5ODHs/+bzb/67Wpv8d7U2+a+rpvgfmyEYoXrl6ff/kY5aDG0rTzMcmJTF8OzVGwYGBgaGNx8+Mbx4/ZbBIHMhw+JCO7g+rLEgISoMZ3/59p2Bh4uTQUSAD6trMQLx/quvDAwMDAzLasIYnr16w/Dt+08GBgYGBqOkPgY2Fkz7MAxYdeAaw4vXbxnefPjEwMDAwMDBzgZnP3r+EqsrMEBs/6H/umqK8ADsXnuB+EBENgRdDDnwqAYAdZh3A8s4elsAAAAASUVORK5CYII=","rabbit_foot.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACASURBVDjLY2AYMqApwfE/CJOteUt3NBin+ln+J8uA4/PS/9/Y1AjGJBsCMgCmGWQQ0QbA/A3SBHMBQW/ANMFsBWkEaYIZgtcAdL8iOxtmCF7NIEXImmA0zACCtoMkkV1AtGYQAEnCDEAOOJhGokIepAikAeYdojVicwlZKW5AAACVgMt1lw6q4AAAAABJRU5ErkJggg==","redstone_dust.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACASURBVDjLY2AY3iCGneE/CJOtuYiB4f8qfkbSDQFpAGn8DzXAkZXhvy4DkYagawa5AsQmyhCYZhhGdgFIDq8hMD8j2wzSAOLD2CBxEzZW7IbAbIcFHLpBBF2hi2QLumaYN0AYpwvQDYFphtlKUDOyISAMUoyukeioRDaIZI10BwBKs37Fj8zsWAAAAABJRU5ErkJggg==","slime.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAADFSURBVDjLfVM7FoMwDPPd2HoExoxdO3IjZh4H6MjQM/UpDwVFOAyCOHFk+ZP4fMsGlP21LUepoA3w3H2W37vuBT4wHLxEQse8TtUvyKaRNaIqcR/YUWWdEbEGM6VmkZUA/5YCLwOZs56pynBpXjymSGWuJrLcFNoZV9URaF6eRlYDkt4IsjqkLVSCTL7LZg28peF9H0kezUP45lPeTK8j0Is6kZStCnTI2luAQWaVmc2EtvUisCFpDuI4Qv8aj7xwT28B+AOAUz9UATNDoQAAAABJRU5ErkJggg==","spider_eye.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABmSURBVDjLY2AYBbQD1bzq/0E4lEkJjEnWPFdO9/+Dk2fANIivxSBAvCEgGx+s2/L/SHw22IBUNm3SDQBphNlOlgEwjSAM4pNkAAiANCBjsgxBdxFZBsDCg+RwQPYK2ZqRDaFZigUAJKJIQ5zXWy0AAAAASUVORK5CYII=","spider_eye_fermented.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACBSURBVDjLY2AYBXiBK6vif2RMsuZqXvX/c+V0wRjEJtogSzYFuMbLszr+H4nPhhsCwloMAv+JMgCkGFkzjCbKAJhtyDaDDCNoALLfQXQqmzYYE+UFkOZQJiUwRjcERIPECTofZIgGpxIcIxtIUDM2ANIEMgDkCrININt2ZENoltwBTiF3gRqBEkQAAAAASUVORK5CYII=","stone.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACeSURBVDjLhVNBEgAxBPNcD3DvEzy5e2LSNLoHw5gSIrXM3GhrrR0ROyI6dvcjh2YVYAE/KnP3blZvDVEQiZGnxj0BrlCe8zhtmWFnRivPPGGNMaIyXql8Zp4TMArG4xWwOyO81usGrAFF4LRin1HxoIqV6MzdLyHxSiyw44xqtNfYvK4pgtSfYCmXt+kTTcxj7prgJaaJSPtTn+IEwT555HfDK6eqhQAAAABJRU5ErkJggg==","sugar.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABySURBVDjL3ZG7EcAgDEMZ0kOwomZwTU3PEkrlnC4h4VOkiCqa9yQfKf07gBNwbsOtNZJclwBOTSmVZplbcKyYklxhXQD4u0RvjuZS6u0NeF8S7SpReLjCLJ8tvRUqeTxDJQFH6xBWiVnugtNfqaJl8PMcL5YmYDtCVM0AAAAASUVORK5CYII=","turtle_helmet.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAv0lEQVQ4je2QPQrCQBCFn9FiiUWwcmFbMZBuAx7A0sIT5BiewxvYeoIcQ0i6vUGIS4qQQGSbJRYiuNkBL5BXfjPvzQ8wa0FBkcmR4tW99PpXlHl32oAJ5nBTGbSKj6/y6YQElLkrLExlHHNXWBwuCULJne28DZhgYALQ+QAmPqwrLLbnNXWVH/Cd2Ogeza0HALSqRpQm3llkgM4HNLpHq2qHP64K+2PsBQRTEKVLz/xb+yuRyXH6KAAIJSf5LOANLWVDQLMLt1oAAAAASUVORK5CYII=","web.png":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACdSURBVDjLhVMxEsAgDPL/73Lu4Btc8go64WHE6FJbIVBiWv8GWrEAXM8X14H6NzAjAAAzAlno4BAEYAMrkPurqxlxqGTljDlsqwrJJPFpHaiSA2blwwk/sBDD00JKWoJMWxPX5XKxRRxAi1FE27sFrC8Kegm06qC6A7adt9DYXvv/7vrq3l0kS852s8U8G8+J0/Y6xcW5jXM1xiryA6iohjBdDMIyAAAAAElFTkSuQmCC"}
+    const img = name => embeddedAssets[`${name}.png`] || `assets/${name}.png`
+
+    const render = (filter = 'all', query = '') => {
+      const normalized = query.trim().toLocaleLowerCase('es-MX')
+      const visible = potions.filter(p => (filter === 'all' || p.cat === filter) && Object.values(p).join(' ').toLocaleLowerCase('es-MX').includes(normalized))
+      tbody.innerHTML = visible.map(p => `
+        <tr>
+          <td><div class="object"><img class="pixel" src="${img(`potion_bottle_${p.icon}`)}" alt=""><div><span class="potion-name">${p.name}</span><small><span class="tag ${p.cat}">${categoryLabel[p.cat]}</span></small></div></div></td>
+          <td><div class="object"><img class="pixel" src="${img(p.ingredientIcon)}" alt=""><div>${p.base}<small>+ ${p.ingredient}</small></div></div></td>
+          <td>${p.duration}</td><td>${p.extended}</td><td>${p.strong}</td><td>${p.effect}</td>
+        </tr>`).join('') || '<tr><td colspan="6" class="muted">No hay resultados para esa búsqueda.</td></tr>'
+    }
+
+    namesBody.innerHTML = potions.map(p => `<tr><td>${p.name}</td><td>${p.splash}</td><td>${p.linger}</td></tr>`).join('')
+    render()
+    let activeFilter = 'all'
+    document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'))
+      button.classList.add('active')
+      activeFilter = button.dataset.filter
+      render(activeFilter, document.querySelector('#search').value)
+    }))
+    document.querySelector('#search').addEventListener('input', event => render(activeFilter, event.target.value))
+  </script>
+</body>
+</html>
